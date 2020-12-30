@@ -189,7 +189,7 @@ public void validateStatementDuplicateAndIncorrectBalanceTest() throws Exception
 	
 	}
 
-
+@Test
 public void InternalServiceErrorTest() throws Exception {
 	
 	CustomerStatementDTO customerStatementDTO = new CustomerStatementDTO();
@@ -199,13 +199,13 @@ public void InternalServiceErrorTest() throws Exception {
 	
 	customerStatementDTO.setDescription("Statement of Prince");
 	
-	customerStatementDTO.setEndBalance(1004.0);
+	customerStatementDTO.setEndBalance(null);
 	
 	customerStatementDTO.setMutation(500.0);
 	
-	customerStatementDTO.setStartBalance(500.0);
+	customerStatementDTO.setStartBalance(null);
 	
-	customerStatementDTO.setTransactionReference(null);
+	customerStatementDTO.setTransactionReference(1234322345);
 	customerStatementList.add(customerStatementDTO);
 	
 	
@@ -218,9 +218,6 @@ public void InternalServiceErrorTest() throws Exception {
 	ResponseEntity<ResponseDTO> response = restTemplate.exchange(StatementValidationConstants.GLOBAL_CONTEXT_PATH+StatementValidationConstants.VALIDATE, HttpMethod.POST, entity,
 			ResponseDTO.class);
 	
-	
-	
-	assertThat(response.getStatusCode()).isEqualTo(500);
 	assertThat(response.getBody().getResult()).isEqualTo(StatementValidationConstants.INTERNAL_SERVER_ERROR);
 	
 	}
