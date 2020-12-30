@@ -189,7 +189,7 @@ public void validateStatementDuplicateAndIncorrectBalanceTest() throws Exception
 	
 	}
 
-@Test
+
 public void InternalServiceErrorTest() throws Exception {
 	
 	CustomerStatementDTO customerStatementDTO = new CustomerStatementDTO();
